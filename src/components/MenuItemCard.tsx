@@ -3,7 +3,6 @@
 import { MenuItem } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
 import Image from "next/image";
 
 interface MenuItemCardProps {
@@ -82,17 +81,6 @@ export function MenuItemCard({ item }: MenuItemCardProps) {
           <span className="font-black text-brand-mint text-lg">
             ₹{item.price}
           </span>
-          <button 
-            disabled={!item.is_in_stock}
-            className={cn(
-              "p-2 rounded-full transition-all duration-300",
-              item.is_in_stock 
-                ? "bg-brand-mint text-brand-dark hover:scale-110 active:scale-95 shadow-lg shadow-brand-mint/20" 
-                : "bg-white/5 text-white/20 cursor-not-allowed"
-            )}
-          >
-            <Plus size={18} strokeWidth={3} />
-          </button>
         </div>
       </div>
     </motion.div>

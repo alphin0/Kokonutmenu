@@ -18,7 +18,7 @@ export default function AdminDashboard() {
   const [imageFile, setImageFile] = useState<File | null>(null);
   
   const [newItem, setNewItem] = useState<Partial<MenuItem>>({ 
-    name: '', price: 0, category_id: categories.length > 0 ? categories[0].id : '', 
+    name: '', description: '', price: 0, category_id: categories.length > 0 ? categories[0].id : '', 
     image_url: '', 
     is_veg: true, is_recommended: false 
   });
@@ -74,7 +74,7 @@ export default function AdminDashboard() {
               setEditingId(null);
               setIsAddingItem(!isAddingItem);
               setNewItem({ 
-                name: '', price: 0, category_id: categories[0]?.id || '', 
+                name: '', description: '', price: 0, category_id: categories[0]?.id || '', 
                 image_url: '', 
                 is_veg: true, is_recommended: false 
               });
@@ -101,6 +101,11 @@ export default function AdminDashboard() {
                 type="number" placeholder="Price" value={newItem.price || ''}
                 onChange={e => setNewItem({...newItem, price: Number(e.target.value)})}
                 className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-mint"
+              />
+              <textarea 
+                placeholder="Description (Optional)" value={newItem.description}
+                onChange={e => setNewItem({...newItem, description: e.target.value})}
+                className="col-span-1 md:col-span-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-mint min-h-[100px]"
               />
               <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 flex items-center justify-between">
                 <span className="text-white/40 text-sm">{imageFile ? imageFile.name : (newItem.image_url ? 'Has image attached' : 'Upload Image (Optional)')}</span>
@@ -173,7 +178,7 @@ export default function AdminDashboard() {
                 } else {
                   const item: Partial<MenuItem> = {
                     name: newItem.name || '',
-                    description: "Delicious " + newItem.name,
+                    description: newItem.description || '',
                     price: newItem.price || 0,
                     category_id: newItem.category_id || categories[0]?.id || '',
                     image_url: newItem.image_url || '',
