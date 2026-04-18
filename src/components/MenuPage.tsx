@@ -21,8 +21,9 @@ export default function MenuPage() {
       const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                            (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()));
       const matchesVeg = isVegOnly ? item.is_veg : true;
+      const isAvailable = item.is_in_stock;
       
-      return matchesSearch && matchesVeg;
+      return matchesSearch && matchesVeg && isAvailable;
     }).sort((a, b) => {
       // Move out of stock to bottom
       if (a.is_in_stock === b.is_in_stock) return a.order_index - b.order_index;

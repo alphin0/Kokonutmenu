@@ -12,14 +12,9 @@ export const updateSession = async (request: NextRequest) => {
     },
   });
 
-  if (!supabaseUrl || !supabaseKey) {
-    console.warn("Supabase credentials missing in Middleware.");
-    return supabaseResponse;
-  }
-
   const supabase = createServerClient(
-    supabaseUrl,
-    supabaseKey,
+    supabaseUrl!,
+    supabaseKey!,
     {
       cookies: {
         getAll() {
