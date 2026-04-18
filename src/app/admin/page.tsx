@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MenuItem, MOCK_CATEGORIES } from "@/lib/data";
 import { Navbar } from "@/components/Navbar";
 import { useMenu } from "@/lib/store";
-import { Plus, Edit2, Eye, EyeOff, Star, Trash } from "lucide-react";
+import { Plus, Edit2, Eye, EyeOff, Star, Trash, Package } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -206,8 +206,12 @@ export default function AdminDashboard() {
         <div className="grid gap-4">
           {menu.map((item) => (
             <div key={item.id} className="bg-card-bg/40 border border-white/5 p-4 rounded-2xl flex items-center gap-4">
-              <div className="relative w-16 h-16 flex-shrink-0">
-                <Image src={item.image_url} alt={item.name} fill className="object-cover rounded-lg" />
+              <div className="relative w-16 h-16 flex-shrink-0 bg-white/5 rounded-lg flex items-center justify-center overflow-hidden">
+                {item.image_url && typeof item.image_url === 'string' && item.image_url.trim() !== '' ? (
+                  <Image src={item.image_url} alt={item.name} fill className="object-cover" />
+                ) : (
+                  <Package className="w-6 h-6 text-white/10" />
+                )}
               </div>
               <div className="flex-grow">
                 <h3 className="font-bold text-white text-sm">{item.name}</h3>
