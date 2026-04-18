@@ -24,7 +24,7 @@ export function CategoryBar({ categories, activeCategory, onCategoryChange }: Ca
   };
 
   return (
-    <div className="sticky top-[73px] z-40 bg-brand-dark px-4 py-3 border-b border-white/5">
+    <div className="sticky top-16 z-40 bg-brand-dark px-4 py-3 border-b border-white/5">
       <div 
         ref={scrollRef}
         className="flex gap-2 overflow-x-auto no-scrollbar max-w-md mx-auto"
@@ -37,7 +37,7 @@ export function CategoryBar({ categories, activeCategory, onCategoryChange }: Ca
           className={cn(
             "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300",
             activeCategory === 'all'
-              ? "bg-brand-mint text-brand-dark shadow-lg shadow-brand-mint/20"
+              ? "bg-brand-mint text-brand-dark"
               : "bg-white/5 text-white/60 hover:bg-white/10"
           )}
         >
@@ -50,7 +50,7 @@ export function CategoryBar({ categories, activeCategory, onCategoryChange }: Ca
             className={cn(
               "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300",
               activeCategory === category.id
-                ? "bg-brand-mint text-brand-dark shadow-lg shadow-brand-mint/20"
+                ? "bg-brand-mint text-brand-dark"
                 : "bg-white/5 text-white/60 hover:bg-white/10"
             )}
           >
