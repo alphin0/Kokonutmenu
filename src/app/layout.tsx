@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Kokonut",
-  description: "Kokonut - Elevated Night Market QR Menu",
+  description: "Kokonut Menu",
   icons: {
     icon: "/favicon.png",
   },
